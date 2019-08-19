@@ -1,6 +1,6 @@
 {
-  "name": "react-select-date-range-calendar",
-  "version": "0.1.4",
+  "name": "react-date-range-calendar",
+  "version": "0.1.6",
   "description": "date range picker calendar React component",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -44,6 +44,9 @@
     "date-range-picker",
     "date-range-calendar",
     "react-calendar",
-    "react-select-date-range-calendar"
+    "react-date-range-calendar",
+    "react-date-range-custom",
+    "react-date-range-calendar-custom-style",
+    "react-date-range-custom-css"
   ]
 }

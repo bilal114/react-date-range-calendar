@@ -1,4 +1,4 @@
-# react-select-date-range-calendar
+# react-date-range-calendar
 
 [![Travis][build-badge]][build]
 [![npm package][npm-badge]][npm]
@@ -14,11 +14,11 @@ React Calendar to pick the range between two dates and easily customizable.
 
 ### Instalation & Configuration
 
-> `npm install --save react-select-date-range-calendar`
+> `npm install --save react-date-range-calendar`
 > 
 ---
 and after installation , Import this package where you want to use the calendar...
-> `import Calendar from "react-select-date-range-calendar";`
+> `import Calendar from "react-date-range-calendar";`
 
 #### Use it in this way...
  ```javascript 

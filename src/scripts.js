@@ -187,6 +187,11 @@ export function nextSec() {
     showCalendar(currentMonth2, currentYear2,"calendar-right-body",monthAndYear2);
 }
 
+
+export function resetItToDefaultState(){
+    previousSec();
+}
+
  function showSecondCalendar() {
     currentYear2 = (currentMonth2 === 11) ? currentYear2 + 1 : currentYear2;
     currentMonth2 = (currentMonth2 + 1) % 12;
@@ -338,7 +343,7 @@ function showCalendar(month, year,tableId="calendar-left-body",monthAndYear1=doc
                 {
 
                 
-                    thatDay = obj.leftCalendar.calendar[i][j] = moment(`${currentYear1}-${currentMonth1+1}-${date}`)
+                    thatDay = obj.leftCalendar.calendar[i][j] = moment(`${currentYear1}-${currentMonth1+1}-${date}`,'YYYY-MM-DD')
                     if(moment(actualCurrentDay).isSame(obj.leftCalendar.calendar[i][j],'day'))
                     cell.classList.add('current');
                 }
@@ -346,14 +351,14 @@ function showCalendar(month, year,tableId="calendar-left-body",monthAndYear1=doc
                 {
 
                     
-                    thatDay = obj.rightCalendar.calendar[i][j] = moment(`${currentYear2}-${currentMonth2+1}-${date}`)
-                    if(moment(actualCurrentDay).isSame(obj.rightCalendar.calendar[i][j],'day'))
+                    thatDay = obj.rightCalendar.calendar[i][j] = moment(`${currentYear2}-${currentMonth2+1}-${date}`,'YYYY-MM-DD')
+                    if(moment(actualCurrentDay,'YYYY-MM-DD').isSame(obj.rightCalendar.calendar[i][j],'day'))
                         cell.classList.add('current');
                 }
 
                 let registerEvents = true;
 
-                if(disablePrevDates && moment(actualCurrentDay).isAfter(thatDay,'day'))
+                if(disablePrevDates && moment(actualCurrentDay,'YYYY-MM-DD').isAfter(thatDay,'day'))
                 {
                     disabledDates.push(thatDay.format('YYYY-MM-DD'));
                     // console.log(disabledDates,'sdddaaaaassssssssssssssssssssssssssssssssss')
@@ -365,7 +370,7 @@ function showCalendar(month, year,tableId="calendar-left-body",monthAndYear1=doc
                 if(disabledDates && Array.isArray(disabledDates) && disabledDates.length>0)
                 for (let disabledDate of disabledDates) {
 
-                    registerEvents =  disableIt(moment(disabledDate)._isValid && thatDay.isSame(moment(disabledDate),'day'),cell);
+                    registerEvents =  disableIt(moment(disabledDate,'YYYY-MM-DD')._isValid && thatDay.isSame(moment(disabledDate,'YYYY-MM-DD'),'day'),cell);
                     if(registerEvents===false)
                         break;
                 }
@@ -484,7 +489,7 @@ function selectValuesOnCalendar () {
     if(selected_values['startDate'] && typeof selected_values['startDate']==='string' && selected_values['endDate'])
     {
 
-        obj.startDate = moment(selected_values['startDate'])
+        obj.startDate = moment(selected_values['startDate'],'YYYY-MM-DD')
 
         // let cameInside = false;
         document.querySelectorAll('.__cal__ tbody td').forEach(function(cell){
@@ -502,23 +507,23 @@ function selectValuesOnCalendar () {
 
             let dt = cal.classList.contains('left')?obj.leftCalendar.calendar[row][col]: obj.rightCalendar.calendar[row][col];
 
-            if(dt.isSame(moment(selected_values['startDate']),'day'))
+            if(dt.isSame(moment(selected_values['startDate'],'YYYY-MM-DD'),'day'))
             {
                 
                 cell.classList.add('in-range');
                 cell.classList.add('start-date');
             }
-            else if(dt.isSame(moment(selected_values['endDate']),'day'))
+            else if(dt.isSame(moment(selected_values['endDate'],'YYYY-MM-DD'),'day'))
             {
 
-                obj.endDate = moment(selected_values['endDate'])
+                obj.endDate = moment(selected_values['endDate'],'YYYY-MM-DD')
                 
                 cell.classList.add('end-date');
                 cell.classList.add('in-range');
 
 
             }
-            else if ((dt.isAfter(obj.startDate) && dt.isBefore(moment(selected_values['endDate']) )) || dt.isSame(moment(selected_values['endDate']), 'day')) 
+            else if ((dt.isAfter(obj.startDate) && dt.isBefore(moment(selected_values['endDate'],'YYYY-MM-DD') )) || dt.isSame(moment(selected_values['endDate'],'YYYY-MM-DD'), 'day')) 
             {
                 cell.classList.add('in-range');
             } 

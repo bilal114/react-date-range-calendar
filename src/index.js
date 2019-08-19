@@ -4,7 +4,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './moment.js';
 import './scripts.js';
-import initiate,{moveToPrevious,moveToNext} from './scripts.js';
+import initiate,{moveToPrevious,moveToNext,resetItToDefaultState} from './scripts.js';
 import styled,{createGlobalStyle} from 'styled-components';
 
 
@@ -198,6 +198,12 @@ export default class extends Component {
 		initiate(this.props);
 
 	}
+
+	componentWillUnmount(){
+		resetItToDefaultState();
+		console.log('component will unmount')
+	}
+
 
   render() {	
     return (

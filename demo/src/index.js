@@ -11,7 +11,7 @@ class Demo extends Component {
       	<div className="col-lg-12">
 
       	<Calendar 
-        onSelect={(startDate,endDate)=>{ console.log(startDate,' this is the start date',endDate,' this is the end date value.......'); }}
+        onSelect={(startDate,endDate,validDateRange)=>{ console.log(startDate,' this is the start date',endDate,' this is the end date value.......',' and this is the validDateRange',validDateRange); }}
         onChange = {(selectedDate) => {
           console.log('here is the selected date',selectedDate);
         }}
