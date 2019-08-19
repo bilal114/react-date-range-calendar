@@ -6,13 +6,13 @@ import Calendar from '../../src'
 class Demo extends Component {
   render() {
     return <div>
-      <h1>Calendar</h1>
+      <h1>Calendar Demo</h1>
       <div className="row" style={{width:'100%'}}>
       	<div className="col-lg-12">
 
       	<Calendar 
         onSelect={(startDate,endDate)=>{ console.log(startDate,' this is the start date',endDate,' this is the end date value.......'); }}
-        selectedRange = {['2019-08-18','2019-09-25']}
+        selectedRange = {['2019-08-22','2019-09-25']}
         disabledDates = {() => { return ['2019-08-16','2019-08-20'] }}
         disablePrevDates
         />

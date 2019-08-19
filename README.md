@@ -10,7 +10,7 @@ React Calendar to pick the range between two dates and easily customizable.
 
 > Here is the working calendar example.
 
-![](https://raw.githubusercontent.com/bilal114/react-select-date-range-calendar/master/screen-capture.gif)
+![](https://raw.githubusercontent.com/bilal114/react-select-date-range-calendar/master/calendar-working-demo.gif)
 
 ### Functional Guide
 | Property Name | Description | Type| Short Example |

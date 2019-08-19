@@ -555,7 +555,7 @@ function applyStyling() {
 
         elem.forEach(function(e){
             e.style.color='white';
-            e.style.background='rgb(118, 51, 152)';
+            e.style.background='rgb(22, 36, 39)';
 
             onHoverTdCssObj && Object.entries(onHoverTdCssObj).forEach(function([key,val]){
 
@@ -572,7 +572,7 @@ function applyStyling() {
 
         elem.forEach(function(e){
             e.style.color = 'white';
-            e.style.background = 'rgb(143, 136, 177)';
+            e.style.background = 'rgb(128, 124, 148)';
             // e.style.background = '#c4bbeb';
 
             inRangedTdCssObj && Object.entries(inRangedTdCssObj).forEach(function([key,val]){
@@ -587,7 +587,8 @@ function applyStyling() {
     {
         if(!elem.classList.contains('active'))
         {
-        elem.style.color = '#f16d9b';
+        elem.style.color = 'rgb(210, 6, 81)';
+        // elem.style.color = '#f16d9b';
 
         currentDateTdCssObj && Object.entries(currentDateTdCssObj).forEach(function([key,val]){
 
@@ -599,7 +600,7 @@ function applyStyling() {
     if(elem = document.querySelector('.start-date'))
     {
         elem.style.color='white';
-        elem.style.background='rgb(118, 51, 152)';
+        elem.style.background='rgb(22, 36, 39)';
 
         startDateTdCssObj && Object.entries(startDateTdCssObj).forEach(function([key,val]){
 
@@ -612,7 +613,7 @@ function applyStyling() {
     {
         elem.style.color='white';
         // elem.style.background='#6759a6';
-        elem.style.background='rgb(118, 51, 152)';
+        elem.style.background='rgb(22, 36, 39)';
 
         endDateTdCssObj && Object.entries(endDateTdCssObj).forEach(function([key,val]){
 

@@ -81,7 +81,7 @@ let LeftArrowBtn = styled.span`
     margin-left: 2%;
 	&:hover {
 		color : white;
-        background : rgb(118, 51, 152);
+        background : rgb(22, 36, 39);
         cursor: pointer;
 	}
 
@@ -95,7 +95,7 @@ let RightArrowBtn = styled.span`
     margin-left: 2px;
 	&:hover {
 		color : white;
-        background : rgb(118, 51, 152);
+        background : rgb(22, 36, 39);
         cursor: pointer;
 	}
 
@@ -127,7 +127,7 @@ let RightCalHeader = styled.div`
 `;
 
 let Th = styled.th`
-	color:#8f88b1;
+	color:rgb(128, 124, 148);
 `;
 
 let GlobalStyle = createGlobalStyle`
