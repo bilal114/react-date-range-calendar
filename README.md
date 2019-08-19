@@ -54,6 +54,8 @@ and after installation , Import this package where you want to use the calendar.
 |startDateTdCssObj| This sets the css in 'object' format for both calendar's date td that is the start date, write javascript style css , `<DOMElement>.style`, you can write any of the javascript style property to style the element  | object | `<Calendar startDateTdCssObj = {{backgroundColor:'grey',fontSize: '14px',color:'black'}} />` |
 |endDateTdCssObj| This sets the css in 'object' format for both calendar's date td that is the end date, write javascript style css , `<DOMElement>.style`, you can write any of the javascript style property to style the element  | object | `<Calendar endDateTdCssObj = {{backgroundColor:'grey',fontSize: '14px',color:'black'}} />` |
 |disabledDatesTdCssObj| This sets the css in 'object' format for both calendar's date td that is the end date, write javascript style css , `<DOMElement>.style`, you can write any of the javascript style property to style the element  | object | `<Calendar disabledDatesTdCssObj = {{backgroundColor:'red',fontSize: '14px',color:'black',opacity:'0.2'}} />` |
+
+	
 [build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
 [build]: https://travis-ci.org/user/repo
 
