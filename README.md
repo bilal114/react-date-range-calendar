@@ -19,7 +19,7 @@ React Calendar to pick the range between two dates and easily customizable.
 | onChange | This method is called, when user selects the start date or end date mean in both cases | function| <Calendar  onChange = {(selectedDate) => {console.log('selected date',selectedDate); }} | 
 |selectedRange | date range that will be by default selected, should be of type **Array e.g.[startDate,endDate]** | Array | <Calendar selectedRange= {["2019-03-03","2019-03-07"]} />|
 disabledDates| disable the dates those get returned by this method in the array format| function |<Calendar disabledDates= {() => { return ["2019-03-01","2019-03-02","2019-03-08"] } } />|
-disablePrevDates| disable the previous dates, by default it's value is false| boolen |<Calendar disabledPrevDates= {true} />|
+disablePrevDates| disable the previous dates, by default it's value is false| boolen|<Calendar disabledPrevDates= {true} />|
 
 ### Style Guide
 
