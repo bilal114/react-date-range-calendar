@@ -1,4 +1,9 @@
-import moment from 'moment';
+import Moment from 'moment';
+import { extendMoment } from 'moment-range';
+
+
+
+const moment = extendMoment(Moment);
 
 let obj = {
 
@@ -47,7 +52,13 @@ let obj = {
 }
 
 let dateChangeHandler = false;
-
+let tdCssObj = false;
+let onHoverTdCssObj = false;
+let inRangedTdCssObj = false;
+let currentDateTdCssObj = false;
+let startDateTdCssObj = false;
+let endDateTdCssObj = false;
+let disabledDatesTdCssObj = false;
 
 // let dateChangeHandler = function(startDate,endDate) {
 
@@ -128,6 +139,33 @@ export default function initiate (props){
         disablePrevDates = props.disablePrevDates;
     }
 
+    // from here props starts related to styling
+    if(props && props.tdCssObj && props.tdCssObj instanceof Object)
+    {
+        tdCssObj = props.tdCssObj;
+    }
+
+    if(props && props.onHoverTdCssObj && props.onHoverTdCssObj instanceof Object)
+    {
+        onHoverTdCssObj = props.onHoverTdCssObj;
+    }    
+    if(props && props.inRangedTdCssObj && props.inRangedTdCssObj instanceof Object)
+    {
+        inRangedTdCssObj = props.inRangedTdCssObj;
+    } 
+    if(props && props.currentDateTdCssObj && props.currentDateTdCssObj instanceof Object)
+    {
+        currentDateTdCssObj = props.currentDateTdCssObj;
+    } 
+    if(props && props.startDateTdCssObj && props.startDateTdCssObj instanceof Object)
+    {
+        startDateTdCssObj = props.startDateTdCssObj;
+    }
+    if(props && props.endDateTdCssObj && props.endDateTdCssObj instanceof Object)
+    {
+        endDateTdCssObj = props.endDateTdCssObj;
+    }
+
     showCalendar(currentMonth1, currentYear1);
     showSecondCalendar();
     selectValuesOnCalendar();
@@ -187,16 +225,16 @@ const getDaysRange = (startDate, endDate) => {
 
     let arr = [];
 
-    let date = '';
-
-    for(let i = 0; startDate.isBefore(endDate,'day');i++)
-    {
-        date = startDate.add(1,'day');
-        arr.push(date);
-
-        if(date.isSame(endDate))
-            break;
-    }
+    
+    const range = moment.range(startDate, endDate);
+        
+        for (let day of range.by('days')) {
+            
+            day = day.format('YYYY-MM-DD');
+            if(disabledDates.indexOf(day)>0);
+            else
+                arr.push(day);
+        }
 
     return  arr;
   }
@@ -225,7 +263,7 @@ function disableIt(condition,cell,registerEvents=true){
 
 function showCalendar(month, year,tableId="calendar-left-body",monthAndYear1=document.getElementById("monthAndYear1")) {
 
-    console.log(getDaysRange(moment('2019-08-08'),moment('2019-09-28')));
+    
     let firstDay = (new Date(year, month)).getDay();
     let daysInMonth = 32 - new Date(year, month, 32).getDate();
 
@@ -262,6 +300,7 @@ function showCalendar(month, year,tableId="calendar-left-body",monthAndYear1=doc
                 let cell = document.createElement("td");
                 let cellText = document.createTextNode("");
                 cell.appendChild(cellText);
+                cell.classList.add('td-not');
                 row.appendChild(cell);
             }
             else if (date > daysInMonth) {
@@ -326,29 +365,11 @@ function showCalendar(month, year,tableId="calendar-left-body",monthAndYear1=doc
                     if(registerEvents===false)
                         break;
                 }
-                // disabledDates && Array.isArray(disabledDates) && disabledDates.length>0 && disabledDates.forEach(function(val,key){
-
-                //     // console.log(val,'ddddddddddddddddddddddddddddddddddddddddd',thatDay);
-                //     registerEvents =  disableIt(moment(val)._isValid && thatDay.isSame(moment(val),'day'),cell);
-                //     if(registerEvents===false)
-                //         return false;
-                //     if(moment(val)._isValid && thatDay.isSame(moment(val),'day'))
-                //     {
-                //         console.log(registerEvents,'ccccccccccccccccccccccccc',cell.classList,cell.classList.value)
-                //         // console.log(cell,'ddddddddddddddddddd',disableIt(moment(val)._isValid && thatDay.isSame(moment(val),'day'),cell),cell);
-                //     }
-                // })
-
-                
-                // (registerEvents =  disableIt(moment(actualCurrentDay).isAfter(thatDay,'day'),cell))
+               
                 if(registerEvents)
                 {
                         
-                        if(thatDay.format('YYYY-MM-DD')==='2019-08-20')
-                        {
-                            console.log('cccccccccccccccccccccccccccccccccccccccccccccccccccccmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm')
-                        }
-
+                        
                         cell.dataset.title = 'r'+i+'c'+j;
                         cell.style.textAlign = 'center';
 
@@ -389,7 +410,7 @@ function showCalendar(month, year,tableId="calendar-left-body",monthAndYear1=doc
               
 
                             
-                            console.log(obj.startDate,obj.endDate,obj.isEndDateNotFinalized,'tttttttttttttttttttttttttttttttttttttttttttttttttttt')
+                            // console.log(obj.startDate,obj.endDate,obj.isEndDateNotFinalized,'tttttttttttttttttttttttttttttttttttttttttttttttttttt')
                             
                             if(!obj.startDate || (obj.startDate && obj.endDate) || (obj.startDate && !obj.endDate && getDateFromTarget(e.target).isBefore(obj.startDate)) )
                             {
@@ -428,21 +449,14 @@ function showCalendar(month, year,tableId="calendar-left-body",monthAndYear1=doc
                                 obj.isEndDateNotFinalized = false;
 
                                 if(dateChangeHandler)
-                                    dateChangeHandler(obj.startDate.format('YYYY-MM-DD'),obj.endDate.format('YYYY-MM-DD'));
+                                    dateChangeHandler(obj.startDate.format('YYYY-MM-DD'),obj.endDate.format('YYYY-MM-DD'),getDaysRange(obj.startDate,obj.endDate));
                                 // e.target.removeEventListener('mouseout',mouseout)
                                 selectValuesOnCalendar();
                             }
                            
-                           // console.log(obj.startDate , !obj.endDate , getDateFromTarget(e.target).isAfter(obj.startDate),getDateFromTarget(e.target))
-
-                            // setStartDate(e);
-
-                            // console.log(moment('2019-03-03').isSame('2019-03-03','day'))
                             applyStyling();
                         })
                 }
-                // console.log(currentMonth,currentYear);
-
 
                 date++;
             }
@@ -523,10 +537,15 @@ function selectValuesOnCalendar () {
 function applyStyling() {
 
     let elem;
-    if(elem = document.querySelectorAll('td')){
+    if(elem = document.querySelectorAll('td:not(.td-not)')){
         elem.forEach(function(e){
             e.style.color = 'black';
             e.style.background = 'white';
+
+            tdCssObj && Object.entries(tdCssObj).forEach(function([key,val]){
+
+                e.style[key] = val;
+            });
         })
     }
 
@@ -536,8 +555,12 @@ function applyStyling() {
 
         elem.forEach(function(e){
             e.style.color='white';
-            e.style.background='#6759a6';
+            e.style.background='rgb(118, 51, 152)';
 
+            onHoverTdCssObj && Object.entries(onHoverTdCssObj).forEach(function([key,val]){
+
+                e.style[key] = val;
+            });
         })
         
     }
@@ -549,53 +572,75 @@ function applyStyling() {
 
         elem.forEach(function(e){
             e.style.color = 'white';
-            e.style.background = '#c4bbeb';
+            e.style.background = 'rgb(143, 136, 177)';
+            // e.style.background = '#c4bbeb';
+
+            inRangedTdCssObj && Object.entries(inRangedTdCssObj).forEach(function([key,val]){
+
+                e.style[key] = val;
+            });
         })
         
     }
+
+    if(elem = document.querySelector('.current'))
+    {
+        if(!elem.classList.contains('active'))
+        {
+        elem.style.color = '#f16d9b';
+
+        currentDateTdCssObj && Object.entries(currentDateTdCssObj).forEach(function([key,val]){
+
+                elem.style[key] = val;
+            });
+        }
+    }
+
     if(elem = document.querySelector('.start-date'))
     {
         elem.style.color='white';
-        elem.style.background='#6759a6';
+        elem.style.background='rgb(118, 51, 152)';
 
+        startDateTdCssObj && Object.entries(startDateTdCssObj).forEach(function([key,val]){
+
+                elem.style[key] = val;
+            });
     }
 
 
     if(elem = document.querySelector('.end-date'))
     {
         elem.style.color='white';
-        elem.style.background='#6759a6';
+        // elem.style.background='#6759a6';
+        elem.style.background='rgb(118, 51, 152)';
+
+        endDateTdCssObj && Object.entries(endDateTdCssObj).forEach(function([key,val]){
+
+                elem.style[key] = val;
+            });
        
     }
 
 
-    if(elem = document.querySelector('.current'))
-    {
-        if(!elem.classList.contains('active'))
-        elem.style.color = '#f16d9b';
-    }
+
 
     if(elem = document.querySelectorAll('.disabled'))
     {
 
         elem.forEach(function(e){
-            let objec = {
-                color: 'black',
-                opacity : '0.3',
-                textDecoration: 'line-through',
-                cursor : 'not-allowed'
-            }
-
-            Object.entries(objec).forEach(function([key,val]){
-
-                e.style[key] = val;
-            })
+           
 
             // e.style = objec;
-            // e.style.color = 'black';
-            // e.style.opacity = '0.4';
-            // e.style.textDecoration = 'line-through';
-            // e.style.cursor = 'not-allowed';
+            e.style.color = 'black';
+            e.style.opacity = '0.3';
+            e.style.textDecoration = 'line-through';
+            e.style.cursor = 'not-allowed';
+            e.style.background = 'white';
+
+            disabledDatesTdCssObj && Object.entries(disabledDatesTdCssObj).forEach(function([key,val]){
+
+                e.style[key] = val;
+            });
         })
         
     }
@@ -609,7 +654,7 @@ function onHoverAfterStartDate (e){
     if(obj.startDate && obj.isEndDateNotFinalized)
     {
 
-        console.log(obj.startDate,obj.endDate,obj.isEndDateNotFinalized,'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy')
+        // console.log(obj.startDate,obj.endDate,obj.isEndDateNotFinalized,'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy')
         let currentHovered = e.target;
 
 

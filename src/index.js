@@ -74,62 +74,63 @@ const monthOptions = (
 	);
 // styling 
 
-const LeftArrowBtn = styled.span`
+let LeftArrowBtn = styled.span`
 	font-size: 30px;
     padding: 0 9px 3px 10px;
     width: 8%;
     margin-left: 2%;
 	&:hover {
 		color : white;
-        background : rgb(103, 89, 166);
+        background : rgb(118, 51, 152);
         cursor: pointer;
 	}
 
 `;
 
-const RightArrowBtn = styled.span`
+
+let RightArrowBtn = styled.span`
 	font-size: 30px;
     padding: 0 8px 3px 11px;
     width: 8%;
     margin-left: 2px;
 	&:hover {
 		color : white;
-        background : rgb(103, 89, 166);
+        background : rgb(118, 51, 152);
         cursor: pointer;
 	}
 
 `;
 
-const LeftMonthYear = styled.span`
+let LeftMonthYear = styled.span`
 	padding-top: 14px;
     padding-left:30%;
 	width : 90%;
 `;
 
-const RightMonthYear = styled.span`
+let RightMonthYear = styled.span`
 	padding-top: 14px;
     padding-left:38%;
 	width : 90%;
 `;
 
-const LeftCalHeader = styled.div`
+let LeftCalHeader = styled.div`
 	max-height: 70px;
     background : white;
 `;
 
 
-const RightCalHeader = styled.div`
+let RightCalHeader = styled.div`
 	max-height: 70px;
     padding-right:5px;
     margin-right: 4px;
     background : white;
 `;
 
-const Th = styled.th`
-	color:#bab5bf;
+let Th = styled.th`
+	color:#8f88b1;
 `;
 
-const GlobalStyle = createGlobalStyle`
+let GlobalStyle = createGlobalStyle`
   	*{
     	border: none !important;
   	}
@@ -149,20 +150,56 @@ const GlobalStyle = createGlobalStyle`
         min-width: 400px;
     }
   
+ 	${props=>props.globalCss} 
 
 `
 
 
 export default class extends Component {
 
+	componentWillMount() {
+
+		// console.log(this.props.leftArrowCss);
+
+		LeftArrowBtn = styled(LeftArrowBtn)`
+			${this.props.leftArrowCss}
+		`;
+
+		RightArrowBtn = styled(LeftArrowBtn)`
+			${this.props.rightArrowCss}
+		`;
+
+		LeftMonthYear = styled(LeftMonthYear)`
+			${this.props.leftMonthYearCss}
+		`;
+
+		RightMonthYear = styled(RightMonthYear)`
+			${this.props.rightMonthYearCss}
+		`;
+
+		LeftCalHeader = styled(LeftCalHeader)`
+			${this.props.leftCalHeaderCss}
+		`;
+
+		RightCalHeader = styled(RightCalHeader)`
+			${this.props.rightCalHeaderCss}
+		`;
+
+		Th = styled(Th)`
+			${this.props.thCss}
+		`;
+
+
+	}
 
 	componentDidMount() {
 
+		
 		initiate(this.props);
 
 	}
 
-  render() {
+  render() {	
     return (
     	<Fragment>
     	
@@ -249,7 +286,7 @@ export default class extends Component {
 		    		</div>
 
 				</div>
-			<GlobalStyle/>
+			<GlobalStyle globalCss={this.props.globalCss}/>
     </Fragment>)
   }
 }
