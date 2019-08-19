@@ -18,8 +18,7 @@ React Calendar to pick the range between two dates and easily customizable.
 > 
 ---
 and after installation , Import this package where you want to use the calendar...
-> `
-    import Calendar from "react-select-date-range-calendar";`
+> `import Calendar from "react-select-date-range-calendar";`
 
 #### Use it in this way...
  ```javascript 
@@ -27,9 +26,7 @@ and after installation , Import this package where you want to use the calendar.
         <Calendar />
     </Fragment>
  ```
-    
-## Documentation
-     [Handlebars templates](http://handlebarsjs.com/)
+
 ### Functional Guide
 | Property Name | Description | Type| Short Example |
 | ------ | ------ | ------ | ------ |
