@@ -22,10 +22,11 @@ and after installation , Import this package where you want to use the calendar.
     import Calendar from "react-select-date-range-calendar";`
 
 ### Use it in this way...
-> ```javascript 
-    <div>
-    <Calendar />
-    </div>
+ ```javascript 
+    <Fragment>
+        <Calendar />
+    </Fragment>
+ ```
     
 
 ### Functional Guide
