@@ -6,7 +6,7 @@
 
 React Calendar to pick the range between two dates and easily customizable.
 
-##Example
+## Example
 
 > Here is the working calendar example.
 
