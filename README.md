@@ -21,14 +21,15 @@ and after installation , Import this package where you want to use the calendar.
 > `
     import Calendar from "react-select-date-range-calendar";`
 
-### Use it in this way...
+#### Use it in this way...
  ```javascript 
     <Fragment>
         <Calendar />
     </Fragment>
  ```
     
-
+## Documentation
+     [Handlebars templates](http://handlebarsjs.com/)
 ### Functional Guide
 | Property Name | Description | Type| Short Example |
 | ------ | ------ | ------ | ------ |
