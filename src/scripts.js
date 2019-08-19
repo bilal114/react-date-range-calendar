@@ -52,6 +52,7 @@ let obj = {
 }
 
 let dateChangeHandler = false;
+let anyDateChangeHandler = false;
 let tdCssObj = false;
 let onHoverTdCssObj = false;
 let inRangedTdCssObj = false;
@@ -110,8 +111,11 @@ export default function initiate (props){
     monthAndYear1 = document.getElementById("monthAndYear1");
     monthAndYear2 = document.getElementById("monthAndYear2");
 
-    if(props && props.onSelect)
+    if(props && props.onSelect && typeof props.onSelect==='function')
     dateChangeHandler = props.onSelect;
+    
+    if(props && props.onChange && typeof props.onSelect==='function')
+    anyDateChangeHandler = props.onChange;
         
     if(props && props.selectedRange && Array.isArray(props.selectedRange) && props.selectedRange.length>1)
     {
@@ -431,6 +435,8 @@ function showCalendar(month, year,tableId="calendar-left-body",monthAndYear1=doc
                                 obj.endDate = null;
                                 selected_values['endDate'] = null;
                                 obj.isEndDateNotFinalized = true;
+                                if(anyDateChangeHandler)
+                                    anyDateChangeHandler(obj.startDate.format('YYYY-MM-DD'));
                                 onHoverAfterStartDate(e);
                                 // e.target.removeEventListener('mouseout',mouseout)
                             }
@@ -451,6 +457,8 @@ function showCalendar(month, year,tableId="calendar-left-body",monthAndYear1=doc
                                 if(dateChangeHandler)
                                     dateChangeHandler(obj.startDate.format('YYYY-MM-DD'),obj.endDate.format('YYYY-MM-DD'),getDaysRange(obj.startDate,obj.endDate));
                                 // e.target.removeEventListener('mouseout',mouseout)
+                                if(anyDateChangeHandler)
+                                    anyDateChangeHandler(obj.endDate.format('YYYY-MM-DD'));
                                 selectValuesOnCalendar();
                             }
                            

@@ -12,6 +12,9 @@ class Demo extends Component {
 
       	<Calendar 
         onSelect={(startDate,endDate)=>{ console.log(startDate,' this is the start date',endDate,' this is the end date value.......'); }}
+        onChange = {(selectedDate) => {
+          console.log('here is the selected date',selectedDate);
+        }}
         selectedRange = {['2019-08-22','2019-09-25']}
         disabledDates = {() => { return ['2019-08-16','2019-08-20'] }}
         disablePrevDates
