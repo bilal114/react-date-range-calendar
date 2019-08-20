@@ -1,6 +1,6 @@
 {
   "name": "react-date-range-calendar",
-  "version": "0.1.9",
+  "version": "0.1.11",
   "description": "date range picker calendar React component",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -37,7 +37,10 @@
   "author": "SarmadBilal",
   "homepage": "",
   "license": "MIT",
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url" : "https://github.com/bilal114/react-date-range-calendar"
+  },
   "keywords": [
     "react-date-range-picker",
     "date-range",

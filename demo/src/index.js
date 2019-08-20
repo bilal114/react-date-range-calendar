@@ -23,7 +23,7 @@ class Demo extends Component {
       </div>
       <div className="row" style={{width:'100%'}}>
         <div className="col-lg-12">
-
+          <iframe src="https://codesandbox.io/embed/awesome-hofstadter-58bgr?fontsize=14" title="awesome-hofstadter-58bgr" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
         
         </div>
       </div>
