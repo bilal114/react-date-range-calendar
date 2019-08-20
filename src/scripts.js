@@ -61,12 +61,6 @@ let startDateTdCssObj = false;
 let endDateTdCssObj = false;
 let disabledDatesTdCssObj = false;
 
-// let dateChangeHandler = function(startDate,endDate) {
-
-
-//     console.log(startDate,endDate,' so this is the end date');
-
-// }
 
 let selected_values = {};
 
@@ -74,16 +68,6 @@ let today = new Date();
 
 let actualCurrentDay = new Date();
 
-// (function(){
-//     // validate these dates first 
-
-//     if(selected_values['startDate'])
-//     {
-
-//         today = new Date(selected_values['startDate']);
-
-//     }
-// })()
 
 let disabledDates = [];
 let disablePrevDates = false;
@@ -253,7 +237,6 @@ const getDaysRange = (startDate, endDate) => {
 function disableIt(condition,cell,registerEvents=true){
 
 
-    // console.log(condition,registerEvents);
     
     cell.classList.remove('disabled');
     cell.classList.remove('not-available');
@@ -361,12 +344,9 @@ function showCalendar(month, year,tableId="calendar-left-body",monthAndYear1=doc
                 if(disablePrevDates && moment(actualCurrentDay,'YYYY-MM-DD').isAfter(thatDay,'day'))
                 {
                     disabledDates.push(thatDay.format('YYYY-MM-DD'));
-                    // console.log(disabledDates,'sdddaaaaassssssssssssssssssssssssssssssssss')
 
                 } 
 
-                // console.log(thatDay.format('YYYY-MM-DD'),' ddddddddddddddddddddddddddddddd',cell);
-                 
                 if(disabledDates && Array.isArray(disabledDates) && disabledDates.length>0)
                 for (let disabledDate of disabledDates) {
 
@@ -384,12 +364,10 @@ function showCalendar(month, year,tableId="calendar-left-body",monthAndYear1=doc
 
                         // mouseover event listener
                         cell.addEventListener('mouseover',function(e){
-                            // console.log('mouseovered            fsadfsaaf',e)
                             e.target.classList.add('active')
 
                             onHoverAfterStartDate(e);
 
-                            // e.target.className +='active';
                             applyStyling();
                         })
                         // called here to put styling default color of actual current date...
@@ -398,8 +376,7 @@ function showCalendar(month, year,tableId="calendar-left-body",monthAndYear1=doc
                        
                         let mouseout = function(e){
 
-                            // e.target.style.color  = 'black';
-                            // e.target.style.background  = 'inherit';
+                            
                             e.target.classList.remove('active')
 
                             applyStyling();
@@ -410,7 +387,6 @@ function showCalendar(month, year,tableId="calendar-left-body",monthAndYear1=doc
                        
                        // click event listener
                         cell.addEventListener('click',function(e){
-                            // console.log('clicked            fsadfsaaf',e)
                             
 
                             document.querySelectorAll('.active').forEach(function(elem){
@@ -419,13 +395,12 @@ function showCalendar(month, year,tableId="calendar-left-body",monthAndYear1=doc
               
 
                             
-                            // console.log(obj.startDate,obj.endDate,obj.isEndDateNotFinalized,'tttttttttttttttttttttttttttttttttttttttttttttttttttt')
+                           
                             
                             if(!obj.startDate || (obj.startDate && obj.endDate) || (obj.startDate && !obj.endDate && getDateFromTarget(e.target).isBefore(obj.startDate)) )
                             {
                                 // removing previous selected start and end date....
 
-                                // console.log(obj.startDate,obj.endDate,'tttttttttttttttttttttttttttttttttttttttttttttttttttt');
                                 document.querySelectorAll('.start-date').forEach(function(elem){
                                     elem.classList.remove('start-date');
                                 })
@@ -443,12 +418,11 @@ function showCalendar(month, year,tableId="calendar-left-body",monthAndYear1=doc
                                 if(anyDateChangeHandler)
                                     anyDateChangeHandler(obj.startDate.format('YYYY-MM-DD'));
                                 onHoverAfterStartDate(e);
-                                // e.target.removeEventListener('mouseout',mouseout)
                             }
                             else if((obj.startDate && !obj.endDate && getDateFromTarget(e.target).isAfter(obj.startDate)) || getDateFromTarget(e.target).isSame(obj.startDate,'day')  )
                             {
                                
-                               // console.log('came to the right place')
+                               
                                 document.querySelectorAll('.end-date').forEach(function(elem){
                                     elem.classList.remove('end-date');
                                 })
@@ -668,7 +642,6 @@ function onHoverAfterStartDate (e){
     if(obj.startDate && obj.isEndDateNotFinalized)
     {
 
-        // console.log(obj.startDate,obj.endDate,obj.isEndDateNotFinalized,'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy')
         let currentHovered = e.target;
 
 
@@ -684,7 +657,6 @@ function onHoverAfterStartDate (e){
 
         document.querySelectorAll('.__cal__ tbody td').forEach(function(cell){
 
-            // console.log(cell);
             if(!cell.dataset.title)
                 return;
             let title = cell.dataset.title;
@@ -709,7 +681,6 @@ function onHoverAfterStartDate (e){
 
         });
 
-        // console.log(cal.classList.contains('left'));
 
     }
 }

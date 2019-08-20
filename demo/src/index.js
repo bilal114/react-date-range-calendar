@@ -15,7 +15,7 @@ class Demo extends Component {
         onChange = {(selectedDate) => {
           console.log('here is the selected date',selectedDate);
         }}
-        selectedRange = {['2019-08-22','2019-09-25']}
+        selectedRange = {['2019-08-22','2019-10-25']}
         disabledDates = {() => { return ['2019-08-16','2019-08-20'] }}
         disablePrevDates
         />

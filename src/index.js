@@ -1,8 +1,8 @@
 import React, {Component,Fragment} from 'react'
 import $ from 'jquery'
+import moment from 'moment';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './moment.js';
 import './scripts.js';
 import initiate,{moveToPrevious,moveToNext,resetItToDefaultState} from './scripts.js';
 import styled,{createGlobalStyle} from 'styled-components';
@@ -159,7 +159,6 @@ export default class extends Component {
 
 	componentWillMount() {
 
-		// console.log(this.props.leftArrowCss);
 
 		LeftArrowBtn = styled(LeftArrowBtn)`
 			${this.props.leftArrowCss}
@@ -201,7 +200,6 @@ export default class extends Component {
 
 	componentWillUnmount(){
 		resetItToDefaultState();
-		console.log('component will unmount')
 	}
 
 
