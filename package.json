@@ -1,9 +1,8 @@
 {
   "name": "react-date-range-calendar",
-  "version": "0.1.11",
+  "version": "0.1.14",
   "description": "date range picker calendar React component",
   "main": "lib/index.js",
-  "module": "es/index.js",
   "files": [
     "css",
     "es",

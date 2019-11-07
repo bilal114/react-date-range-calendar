@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
+// import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./scripts.js";
 import initiate, {
