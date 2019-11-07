@@ -1,9 +1,5 @@
 # react-date-range-calendar
 
-[![Travis][build-badge]][build]
-[![npm package][npm-badge]][npm]
-[![Coveralls][coveralls-badge]][coveralls]
-
 React Calendar to pick the range between two dates and easily customizable.
 
 ## Example
@@ -13,13 +9,13 @@ React Calendar to pick the range between two dates and easily customizable.
 ![](https://raw.githubusercontent.com/bilal114/react-select-date-range-calendar/master/calendar-working-demo.gif)
 
 # Live Demo
-``
-####  [ `Click` to Edit Code ON `codesandbox.io`](https://codesandbox.io/s/awesome-hofstadter-58bgr?fontsize=14)
-``
 
- ##### [`Click` to watch working `Calendar Demo`](https://csb-58bgr.netlify.com/)
+####  [ `Click` to Edit Code ON `codesandbox.io`](https://codesandbox.io/s/awesome-hofstadter-58bgr?fontsize=14)
+
+
+#### [`Click` to watch working `Calendar Demo`](https://csb-58bgr.netlify.com/)
  
-``
+
 
        
  
@@ -39,6 +35,8 @@ and after installation , Import this package where you want to use the calendar.
         <Calendar />
     </Fragment>
  ```
+### Support : 
+All major browsers are supported , If you want to run it on IE 9,10,11 . For that you will have to add polyfills for all the things like foreach, closest, es7-object-polyfill and react-app-polyfill
 
 ### Functional Guide
 | Property Name | Description | Type| Short Example |
@@ -68,6 +66,12 @@ and after installation , Import this package where you want to use the calendar.
 |endDateTdCssObj| This sets the css in 'object' format for both calendar's date td that is the end date, write javascript style css , `<DOMElement>.style`, you can write any of the javascript style property to style the element  | object | `<Calendar endDateTdCssObj = {{backgroundColor:'grey',fontSize: '14px',color:'black'}} />` |
 |disabledDatesTdCssObj| This sets the css in 'object' format for both calendar's date td that is the end date, write javascript style css , `<DOMElement>.style`, you can write any of the javascript style property to style the element  | object | `<Calendar disabledDatesTdCssObj = {{backgroundColor:'red',fontSize: '14px',color:'black',opacity:'0.2'}} />` |
 
+#### Info :
+ Disabled dates will not be highlighted even if they get selected , by the selectedRange prop of the component. 
+
+### Contributing 
+
+IF you see any kind of i
 	
 [build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
 [build]: https://travis-ci.org/user/repo

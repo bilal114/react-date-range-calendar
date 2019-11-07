@@ -110,6 +110,9 @@ export default function initiate (props){
     {
 
         today = new Date(selected_values['startDate']);
+        // here we are forcing our calendar to open according the start date not by current date
+        currentYear1 = currentYear2 = today.getFullYear();
+        currentMonth1 = currentMonth2 = today.getMonth();
 
     }
 
@@ -464,6 +467,7 @@ function selectValuesOnCalendar () {
     {
 
         obj.startDate = moment(selected_values['startDate'],'YYYY-MM-DD')
+        obj.endDate = moment(selected_values['endDate'],'YYYY-MM-DD');
 
         // let cameInside = false;
         document.querySelectorAll('.__cal__ tbody td').forEach(function(cell){
