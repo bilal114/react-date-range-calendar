@@ -71,7 +71,7 @@ All major browsers are supported , If you want to run it on IE 9,10,11 . For tha
 
 ### Contributing 
 
-IF you see any kind of i
+Pull requests are welcome
 	
 [build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
 [build]: https://travis-ci.org/user/repo
